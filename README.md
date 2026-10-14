@@ -52,9 +52,11 @@ Given the scope of this project, I wanted to keep the backend as simple as possi
 
 ## Run locally
 
-Requires Python 3.14 or newer and `uv`. Clone the repository and change into its directory, then run:
+Requires Python 3.14 or newer and `uv`. Clone the repository, enter the project directory, install dependencies, and start the app:
 
 ```bash
+git clone https://github.com/mark-agard/dc-parcel-screen.git
+cd dc-parcel-screen
 uv sync
 uv run streamlit run src/parcel_screen/app.py
 ```
@@ -74,13 +76,10 @@ Run with:
 uv run python -m unittest discover -s tests -v
 ```
 
-## Limitations and next steps
+## Next steps
+Given the app's limitations, I have some thoughts for continued development.
 
-- Transit access is based on straight-line distance to the nearest feature, not a walking route or travel time.
-- Parcel geometry is simplified during preparation; note the effect this may have on parcels very close to a distance threshold.
-- [Add known data gaps, freshness limits, or planned improvements.]
+First, I would like to benchmark the app's performance with larger datasets. Depending on how the application handles larger datasets, I might begin development on a duckdb-based backend to handle spatial queries more efficiently.
 
+Assuming a scalable backend is in place, it would be beneficial to add a more robust set of filters to the map. As it stands, the app only supports filtering by parcel attributes and selecting parcels within a certain distance of transit infrastructure. However, it's easy to imagine wanting parcels more than a certain distance from some features.
 
-## License and attribution
-
-[Add the project license and separate attribution/license details for each source dataset.] 
