@@ -1,0 +1,21 @@
+[project]
+name = "parcel-screen"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Mark Agard", email = "mark.d.agard@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "geopandas>=1.2.0",
+    "pyarrow>=25.0.1",
+    "pydeck>=0.9.3",
+    "pyogrio>=0.13.0",
+    "requests>=2.34.2",
+    "streamlit>=1.65.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.7,<0.13.0"]
+build-backend = "uv_build"
