@@ -1,16 +1,14 @@
 # DC Parcel Screen
 
-Streamlit application for parcel-level analysis of Washington, DC common ownership lots.
+DC Parcel Screen is a Python geospatial app built with Streamlit, GeoPandas, and PyDeck for exploring Washington, DC parcels by property attributes and proximity to transit.
 
 ## Project overview
-
-DC Parcel Screen is an interactive map for exploring Washington, DC parcels through property attributes and proximity to transit and bikeshare. Users can narrow the results with attribute and proximity filters, inspect individual parcels, and export matching records.
 
 I built this tool as a technical introduction to Streamlit. Much of my front-end experience been with JavaScript frameworks like React and Angular. Streamlit is a useful tool for when interactive maps are needed on quick timelines or on an ad-hoc basis. 
 
 The thematic focus on parcel screening  allows me to explore Streamlit's implementation details with a widely generalizable use case. Much of the parcel-level analysis I've performed in my career was, at a high-level, about applying atttibute and spatial filters to identify parcels of interest. As such, this tool serves as a proof-of-concept for a broader class of parcel-level analysis applications. 
 
-In it's current form, DC Parcel Screen is most useful to my friend who is searching for transit-accessible apartments in DC. However, the same framework can be used to identify parcels near electrical infrastructure, floodplains, or other geographic features.
+In its current form, DC Parcel Screen is most useful as an early-stage screening tool for transit access. However, the same framework can be used to identify parcels near electrical infrastructure, floodplains, or other geographic features.
 
 ## What you can do
 
@@ -44,10 +42,10 @@ Given the scope of this project, I wanted to keep the backend as simple as possi
 
 | Dataset / local files | Source | Preparation |
 | --- | --- | --- |
-| DC common-ownership parcels (`Common_Ownership_Lots.geojson` → `Common_Ownership_Lots.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/1f6708b1f3774306bef2fa81e612a725_40/explore?location=38.894000%2C-77.034607%2C12) | Retain `OBJECTID`, `PROPTYPE`, `STATEDAREA`, `PRMSWARD`, `PREMISEADD`, `NBHDNAME`, and `NEWTOTAL`; simplify geometry by 1 meter in EPSG:32618, then transform back to EPSG:4326; write Zstandard-compressed GeoParquet. |
-| Capital Bikeshare locations (`Capital_Bike_Share_Locations.geojson` → `Capital_Bike_Share_Locations.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/a1f7acf65795451d89f0a38565a975b3_5/explore?location=38.954001%2C-77.097127%2C11) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
-| Metro bus stops (`Metro_Bus_Stops.geojson` → `Metro_Bus_Stops.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/e85b5321a5a84ff9af56fd614dab81b3_53/explore?location=38.923580%2C-77.046055%2C10) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
-| Regional Metro stations (`Metro_Stations_(Regional).geojson` → `Metro_Stations_(Regional).parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/e3896b58a4e741d48ddcda03dae9d21b_51/explore?location=38.892537%2C-77.020630%2C12) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
+| DC common-ownership parcels (`Common_Ownership_Lots.geojson` → `Common_Ownership_Lots.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/1f6708b1f3774306bef2fa81e612a725_40/explore?location=38.894000%2C-77.034607%2C12) (CC BY 4.0; accessed October 14, 2026) | Retain `OBJECTID`, `PROPTYPE`, `STATEDAREA`, `PRMSWARD`, `PREMISEADD`, `NBHDNAME`, and `NEWTOTAL`; simplify geometry by 1 meter in EPSG:32618, then transform back to EPSG:4326; write Zstandard-compressed GeoParquet. |
+| Capital Bikeshare locations (`Capital_Bike_Share_Locations.geojson` → `Capital_Bike_Share_Locations.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/a1f7acf65795451d89f0a38565a975b3_5/explore?location=38.954001%2C-77.097127%2C11) (CC BY 4.0; accessed October 14, 2026) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
+| Metro bus stops (`Metro_Bus_Stops.geojson` → `Metro_Bus_Stops.parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/e85b5321a5a84ff9af56fd614dab81b3_53/explore?location=38.923580%2C-77.046055%2C10) (CC BY 4.0; accessed October 14, 2026) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
+| Regional Metro stations (`Metro_Stations_(Regional).geojson` → `Metro_Stations_(Regional).parquet`) | [DC Open Data](https://opendata.dc.gov/datasets/e3896b58a4e741d48ddcda03dae9d21b_51/explore?location=38.892537%2C-77.020630%2C12) (CC BY 4.0; accessed October 14, 2026) | Retain all columns; reproject to EPSG:32618; write Zstandard-compressed GeoParquet. |
 
 
 ## Run locally
